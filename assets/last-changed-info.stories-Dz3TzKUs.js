@@ -1,0 +1,8 @@
+import{j as m}from"./jsx-runtime-u17CrQMm.js";import{c as u}from"./compiler-runtime-BLcvFMuB.js";import{c as h}from"./class-names-C2kgz_Qa.js";import"./iframe-B1MrCL0G.js";import"./preload-helper-PPVm8Dsz.js";function f(a){const n=a.toLocaleDateString("en-US",{year:"2-digit",month:"2-digit",day:"2-digit"}),r=a.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",hour12:!1});return`${n} @ ${r}`}const d=a=>{const e=u.c(7),{changedDate:n,changedBy:r,className:i}=a;let s;e[0]!==n?(s=f(n),e[0]=n,e[1]=s):s=e[1];const g=s,p=r?`by ${r}`:"",l=`Last changed on ${g} ${p}`;let t;e[2]!==i?(t=h("paragraph-100 mt-5 text-neutral-700",i),e[2]=i,e[3]=t):t=e[3];let o;return e[4]!==l||e[5]!==t?(o=m.jsx("p",{className:t,children:l}),e[4]=l,e[5]=t,e[6]=o):o=e[6],o};try{d.displayName="LastChangedInfo",d.__docgenInfo={description:"",displayName:"LastChangedInfo",props:{changedDate:{defaultValue:null,description:"",name:"changedDate",required:!0,type:{name:"Date"}},changedBy:{defaultValue:null,description:"",name:"changedBy",required:!0,type:{name:"string | null"}},className:{defaultValue:null,description:"",name:"className",required:!1,type:{name:"string"}}}}}catch{}const B={title:"Last Changed Info",component:d},c={render:a=>m.jsx(d,{...a}),args:{changedDate:new Date,changedBy:"By_You",className:""}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`{
+  render: args => <LastChangedInfo {...args} />,
+  args: {
+    changedDate: new Date(),
+    changedBy: 'By_You',
+    className: ''
+  }
+}`,...c.parameters?.docs?.source}}};const L=["Default"];export{c as Default,L as __namedExportsOrder,B as default};
