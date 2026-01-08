@@ -8,7 +8,7 @@ const meta: Meta<typeof Tab> = {
   component: Tab,
   parameters: {
     ...getStoryDescription(
-      'Tab component. For a detailed explanation on props, please visit the Headless UI [tab-group documentation](https://headlessui.com/react-vite/tabs#tab-group)',
+      'Tab component. For a detailed explanation on props, please visit the Headless UI [tab-group documentation](https://headlessui.com/react/tabs#tab-group)',
     ),
     docs: { source: { type: 'auto' } },
   },

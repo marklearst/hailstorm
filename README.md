@@ -6,6 +6,7 @@ Hailstorm is the Abusix design system: a React 19 component library with
 token-driven styling, Storybook documentation, and accessibility-first patterns.
 It is built for consistent UI delivery, predictable APIs, and sustainable
 engineering workflows.
+This fork is maintained by Mark Learst.
 
 ## Highlights
 
@@ -46,6 +47,8 @@ pnpm test
 pnpm lint
 pnpm run build
 ```
+
+Formatting is handled by Prettier 3 using the repo config in `.prettierrc.json`.
 
 ## Documentation
 
