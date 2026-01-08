@@ -1,1 +1,0 @@
-import{j as o}from"./jsx-runtime-u17CrQMm.js";import{c as t}from"./compiler-runtime-BLcvFMuB.js";const n=()=>{const r=t.c(1);let e;return r[0]===Symbol.for("react.memo_cache_sentinel")?(e=o.jsx("hr",{className:"h-px border-none bg-neutral-300"}),r[0]=e):e=r[0],e};export{n as M};

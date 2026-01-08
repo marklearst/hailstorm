@@ -1,9 +1,0 @@
-import{j as c}from"./jsx-runtime-u17CrQMm.js";import{c as p}from"./compiler-runtime-BLcvFMuB.js";import"./iframe-B1MrCL0G.js";import"./preload-helper-PPVm8Dsz.js";const s=r=>{const e=p.c(2),{children:a}=r;let t;return e[0]!==a?(t=c.jsx("p",{className:"paragraph-200 text-neutral-800",children:a}),e[0]=a,e[1]=t):t=e[1],t};try{s.displayName="PageDescription",s.__docgenInfo={description:"",displayName:"PageDescription",props:{}}}catch{}const n=r=>{const e=p.c(2),{children:a}=r;let t;return e[0]!==a?(t=c.jsx("h3",{className:"headline-700 text-black",children:a}),e[0]=a,e[1]=t):t=e[1],t};try{n.displayName="PageTitle",n.__docgenInfo={description:"",displayName:"PageTitle",props:{}}}catch{}const i=r=>{const e=p.c(2),{children:a}=r;let t;return e[0]!==a?(t=c.jsx("div",{className:"flex flex-col gap-2",children:a}),e[0]=a,e[1]=t):t=e[1],t};i.Title=n;i.Description=s;try{i.displayName="Page",i.__docgenInfo={description:"",displayName:"Page",props:{}}}catch{}try{i.Title.displayName="Page.Title",i.Title.__docgenInfo={description:"",displayName:"Page.Title",props:{}}}catch{}try{i.Description.displayName="Page.Description",i.Description.__docgenInfo={description:"",displayName:"Page.Description",props:{}}}catch{}const m={title:"Page",component:i,args:{title:"Page Title",description:"Description"},argTypes:{title:{control:"text"},description:{control:"text"}}},o={render:({title:r,description:e})=>c.jsxs(i,{children:[c.jsx(i.Title,{children:r}),c.jsx(i.Description,{children:e})]})};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
-  render: ({
-    title,
-    description
-  }) => <Page>
-      <Page.Title>{title}</Page.Title>
-      <Page.Description>{description}</Page.Description>
-    </Page>
-}`,...o.parameters?.docs?.source}}};const y=["Default"];export{o as Default,y as __namedExportsOrder,m as default};
