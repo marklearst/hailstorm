@@ -3,7 +3,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { MenuInfoItem } from './menu-info-item'
 
-const meta: Meta<typeof MenuInfoItem> = {
+type MenuInfoItemStoryArgs = {
+  title: string
+  subtitle: string
+  containerWidth: number
+}
+
+const meta: Meta<MenuInfoItemStoryArgs> = {
   title: 'Menu/MenuInfoItem',
   component: MenuInfoItem,
   args: {
@@ -12,8 +18,8 @@ const meta: Meta<typeof MenuInfoItem> = {
     containerWidth: 208,
   },
   argTypes: {
-    title: { control: 'text' },
-    subtitle: { control: 'text' },
+    title: { control: { type: 'text' } },
+    subtitle: { control: { type: 'text' } },
     containerWidth: {
       control: { type: 'range', min: 120, max: 320, step: 8 },
     },
@@ -21,12 +27,12 @@ const meta: Meta<typeof MenuInfoItem> = {
 }
 
 export default meta
-type Story = StoryObj<typeof MenuInfoItem>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: ({ title, subtitle, containerWidth }) => (
-    <div style={{ width: containerWidth }}>
-      <MenuInfoItem title={title} subtitle={subtitle} />
+  render: (args: MenuInfoItemStoryArgs) => (
+    <div style={{ width: args.containerWidth }}>
+      <MenuInfoItem title={args.title} subtitle={args.subtitle} />
     </div>
   ),
 }
