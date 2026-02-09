@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 import { FormField } from '../form-field'
-import { RadioBox } from './radio-box'
 import { FeaturedTag } from '../../featured-tag/featured-tag'
 
 type RadioBoxStoryArgs = {

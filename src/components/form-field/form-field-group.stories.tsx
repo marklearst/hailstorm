@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { FormFieldGroup } from './form-field-group'
 import { FormField } from './form-field'
 
 type FormFieldGroupStoryArgs = {

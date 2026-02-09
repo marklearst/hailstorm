@@ -2,10 +2,6 @@ name: Build
 
 on: push
 
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 jobs:
   format-check:
     runs-on: ubuntu-latest
