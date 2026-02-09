@@ -18,10 +18,10 @@ export const multiComboboxArgs: MultiComboboxStoryArgs = {
 }
 
 export const multiComboboxArgTypes = {
-  label: { control: 'text' },
-  description: { control: 'text' },
-  placeholder: { control: 'text' },
-  width: { control: { type: 'range', min: 200, max: 360, step: 16 } },
+  label: { control: { type: 'text' as const } },
+  description: { control: { type: 'text' as const } },
+  placeholder: { control: { type: 'text' as const } },
+  width: { control: { type: 'range' as const, min: 200, max: 360, step: 16 } },
 }
 
 const people = [
