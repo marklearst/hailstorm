@@ -4,7 +4,16 @@ import { useState } from 'react'
 import { FormField } from '../form-field'
 import { SearchIcon } from '../../../icons'
 
-const meta: Meta<typeof FormField.TextInput> = {
+type TextInputStoryArgs = {
+  error: boolean
+  disabled: boolean
+  hasLeftIcon: boolean
+  readOnly: boolean
+  value: string
+  optional: boolean
+}
+
+const meta: Meta<TextInputStoryArgs> = {
   title: 'Input/TextInput',
   component: FormField.TextInput,
   args: {
@@ -16,18 +25,18 @@ const meta: Meta<typeof FormField.TextInput> = {
     optional: false,
   },
   argTypes: {
-    error: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    hasLeftIcon: { control: 'boolean' },
-    readOnly: { control: 'boolean' },
-    value: { control: 'text' },
-    optional: { control: 'boolean' },
+    error: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    hasLeftIcon: { control: { type: 'boolean' } },
+    readOnly: { control: { type: 'boolean' } },
+    value: { control: { type: 'text' } },
+    optional: { control: { type: 'boolean' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof FormField.TextInput>
+type Story = StoryObj<typeof meta>
 
 const TextInputWithHooks = ({
   error = false,
@@ -77,7 +86,7 @@ const TextInputWithHooks = ({
 }
 
 export const Default: Story = {
-  render: (args) => (
+  render: (args: TextInputStoryArgs) => (
     <div className='w-72'>
       <TextInputWithHooks {...args} />
     </div>
