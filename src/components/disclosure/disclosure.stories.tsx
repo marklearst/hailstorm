@@ -1,16 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Disclosure } from './disclosure'
 
-const meta: Meta<typeof Disclosure> = {
+type DisclosureStoryArgs = {
+  buttonLabel: string
+  panelContent: string
+}
+
+const meta: Meta<DisclosureStoryArgs> = {
   title: 'Disclosure',
-  component: Disclosure,
   args: {
     buttonLabel: 'Disclosure Button',
     panelContent: 'Disclosure Content',
   },
   argTypes: {
-    buttonLabel: { control: 'text' },
-    panelContent: { control: 'text' },
+    buttonLabel: { control: { type: 'text' } },
+    panelContent: { control: { type: 'text' } },
   },
   parameters: {
     options: {
@@ -20,7 +24,7 @@ const meta: Meta<typeof Disclosure> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Disclosure>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({ buttonLabel, panelContent }) => (
