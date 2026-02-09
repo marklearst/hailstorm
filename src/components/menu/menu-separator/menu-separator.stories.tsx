@@ -3,7 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { MenuSeparator } from './menu-separator'
 
-const meta: Meta<typeof MenuSeparator> = {
+type MenuSeparatorStoryArgs = {
+  containerWidth: number
+}
+
+const meta: Meta<MenuSeparatorStoryArgs> = {
   title: 'Menu/MenuSeparator',
   component: MenuSeparator,
   args: {
@@ -17,11 +21,11 @@ const meta: Meta<typeof MenuSeparator> = {
 }
 
 export default meta
-type Story = StoryObj<typeof MenuSeparator>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: ({ containerWidth }) => (
-    <div style={{ width: containerWidth }}>
+  render: (args: MenuSeparatorStoryArgs) => (
+    <div style={{ width: args.containerWidth }}>
       <MenuSeparator />
     </div>
   ),
