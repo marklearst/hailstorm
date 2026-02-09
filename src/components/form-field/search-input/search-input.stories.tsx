@@ -3,9 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 import { FormField } from '../form-field'
 
-const meta: Meta<typeof FormField.SearchInput> = {
+type SearchInputStoryArgs = {
+  error: boolean
+  disabled: boolean
+  readOnly: boolean
+  value: string
+  label: string
+  description: string
+}
+
+const meta: Meta<SearchInputStoryArgs> = {
   title: 'Input/SearchInput',
-  component: FormField.SearchInput,
   args: {
     error: false,
     disabled: false,
@@ -15,18 +23,18 @@ const meta: Meta<typeof FormField.SearchInput> = {
     description: 'Description',
   },
   argTypes: {
-    error: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    readOnly: { control: 'boolean' },
-    value: { control: 'text' },
-    label: { control: 'text' },
-    description: { control: 'text' },
+    error: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    readOnly: { control: { type: 'boolean' } },
+    value: { control: { type: 'text' } },
+    label: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof FormField.SearchInput>
+type Story = StoryObj<typeof meta>
 
 const SearchInputWithHooks = ({
   error = false,
@@ -77,7 +85,7 @@ const SearchInputWithHooks = ({
 }
 
 export const Default: Story = {
-  render: (args) => (
+  render: (args: SearchInputStoryArgs) => (
     <div className='w-72'>
       <SearchInputWithHooks {...args} />
     </div>
