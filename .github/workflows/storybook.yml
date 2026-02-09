@@ -4,14 +4,17 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write  # push to gh-pages-storybook branch
+
 jobs:
   build-and-deploy-storybook:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
           version: 10.27.0
@@ -20,8 +23,8 @@ jobs:
           node-version: 22
           cache: 'pnpm'
       - name: Install and Build 🔧
-        run: | # Install npm packages and build the Storybook files
-          pnpm install
+        run: |
+          pnpm install --frozen-lockfile
           pnpm run build:storybook
       - name: Add .nojekyll file to static folder 📁
         run:
@@ -32,3 +35,4 @@ jobs:
         with:
           branch: gh-pages-storybook
           folder: storybook-static
+          clean: true
