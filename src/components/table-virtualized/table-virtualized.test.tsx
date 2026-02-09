@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { createColumnHelper } from '@tanstack/react-table'
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table'
 import { TableVirtualized } from './table-virtualized'
 
 interface RowData {
@@ -33,14 +33,14 @@ describe('TableVirtualized', () => {
       <div style={{ height: 300 }}>
         <TableVirtualized<RowData>
           data={data}
-          columnDefs={columnDefs}
+          columnDefs={columnDefs as ColumnDef<RowData>[]}
           virtualizerOptions={{
             observeElementRect: (_instance, callback) => {
               callback({ height: 300, width: 300 })
               return () => {}
             },
             observeElementOffset: (_instance, callback) => {
-              callback(0)
+              ;(callback as (offset: number, sync?: boolean) => void)(0, false)
               return () => {}
             },
           }}
