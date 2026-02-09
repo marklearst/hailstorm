@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { DividerLine } from './divider-line'
 
-const meta: Meta<typeof DividerLine> = {
+type DividerLineStoryArgs = {
+  padding: number
+  showIcons: boolean
+}
+
+const meta: Meta<DividerLineStoryArgs> = {
   title: 'DividerLine',
   component: DividerLine,
   args: {
@@ -11,16 +16,16 @@ const meta: Meta<typeof DividerLine> = {
   },
   argTypes: {
     padding: { control: { type: 'range', min: 0, max: 32, step: 2 } },
-    showIcons: { control: 'boolean' },
+    showIcons: { control: { type: 'boolean' } },
   },
   parameters: { layout: 'fullscreen' },
-  render: ({ padding, showIcons }) => (
-    <div style={{ padding }}>
-      {showIcons ?
+  render: (args: DividerLineStoryArgs) => (
+    <div style={{ padding: args.padding }}>
+      {args.showIcons ?
         <span>🌞</span>
       : null}
       <DividerLine />
-      {showIcons ?
+      {args.showIcons ?
         <span>🌙</span>
       : null}
     </div>
@@ -28,6 +33,6 @@ const meta: Meta<typeof DividerLine> = {
 }
 
 export default meta
-type Story = StoryObj<typeof DividerLine>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
