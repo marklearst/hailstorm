@@ -1,9 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ButtonGroup } from './button-group'
 
-const meta: Meta<typeof ButtonGroup> = {
+type ButtonGroupStoryArgs = {
+  normalLabel: string
+  disabledLabel: string
+  activeLabel: string
+  activeDisabledLabel: string
+  extraLabel: string
+}
+
+const meta: Meta<ButtonGroupStoryArgs> = {
   title: 'ButtonGroup',
-  component: ButtonGroup,
   args: {
     normalLabel: 'Normal',
     disabledLabel: 'Disabled',
@@ -12,11 +19,11 @@ const meta: Meta<typeof ButtonGroup> = {
     extraLabel: 'Button 1',
   },
   argTypes: {
-    normalLabel: { control: 'text' },
-    disabledLabel: { control: 'text' },
-    activeLabel: { control: 'text' },
-    activeDisabledLabel: { control: 'text' },
-    extraLabel: { control: 'text' },
+    normalLabel: { control: { type: 'text' } },
+    disabledLabel: { control: { type: 'text' } },
+    activeLabel: { control: { type: 'text' } },
+    activeDisabledLabel: { control: { type: 'text' } },
+    extraLabel: { control: { type: 'text' } },
   },
   parameters: {
     options: {
@@ -26,7 +33,7 @@ const meta: Meta<typeof ButtonGroup> = {
 }
 
 export default meta
-type Story = StoryObj<typeof ButtonGroup>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({

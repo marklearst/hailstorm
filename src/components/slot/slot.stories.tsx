@@ -1,7 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Slot } from './slot'
 
-const meta: Meta<typeof Slot> = {
+type SlotStoryArgs = {
+  label: string
+  href: string
+  className: string
+}
+
+const meta: Meta<SlotStoryArgs> = {
   title: 'Slot',
   component: Slot,
   args: {
@@ -10,15 +16,15 @@ const meta: Meta<typeof Slot> = {
     className: 'text-primary-500 underline',
   },
   argTypes: {
-    label: { control: 'text' },
-    href: { control: 'text' },
-    className: { control: 'text' },
+    label: { control: { type: 'text' } },
+    href: { control: { type: 'text' } },
+    className: { control: { type: 'text' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof Slot>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({ label, href, className }) => (

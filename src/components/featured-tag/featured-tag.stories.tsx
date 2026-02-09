@@ -4,22 +4,26 @@ import { FeaturedTag } from './featured-tag'
 import { Panel } from '../panel'
 import { FormField } from '../form-field'
 
-const meta: Meta<typeof FeaturedTag> = {
+type FeaturedTagStoryArgs = {
+  tagLabel: string
+  panelText: string
+}
+
+const meta: Meta<FeaturedTagStoryArgs> = {
   title: 'Input/FeaturedTag',
-  component: FeaturedTag,
   args: {
     tagLabel: 'Recommended!',
     panelText: 'This example uses a Panel component',
   },
   argTypes: {
-    tagLabel: { control: 'text' },
-    panelText: { control: 'text' },
+    tagLabel: { control: { type: 'text' } },
+    panelText: { control: { type: 'text' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof FeaturedTag>
+type Story = StoryObj<typeof meta>
 
 const RadioBoxWithRecommendationTag = ({ tagLabel }: { tagLabel: string }) => {
   const [value, setValue] = useState('value_1')

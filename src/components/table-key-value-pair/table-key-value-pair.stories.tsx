@@ -3,9 +3,21 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TableKeyValuePair } from './table-key-value-pair'
 import { FormField } from '../form-field'
 
-const meta: Meta<typeof TableKeyValuePair> = {
+type TableKeyValuePairStoryArgs = {
+  header: string
+  firstNameLabel: string
+  firstNameValue: string
+  ageLabel: string
+  ageValue: string
+  lastNameLabel: string
+  lastNameValue: string
+  birthLabel: string
+  birthValue: string
+  linkLabel: string
+}
+
+const meta: Meta<TableKeyValuePairStoryArgs> = {
   title: 'Table / Key-Value Pairs',
-  component: TableKeyValuePair,
   args: {
     header: 'Details',
     firstNameLabel: 'First Name',
@@ -19,21 +31,21 @@ const meta: Meta<typeof TableKeyValuePair> = {
     linkLabel: 'Open Comments',
   },
   argTypes: {
-    header: { control: 'text' },
-    firstNameLabel: { control: 'text' },
-    firstNameValue: { control: 'text' },
-    ageLabel: { control: 'text' },
-    ageValue: { control: 'text' },
-    lastNameLabel: { control: 'text' },
-    lastNameValue: { control: 'text' },
-    birthLabel: { control: 'text' },
-    birthValue: { control: 'text' },
-    linkLabel: { control: 'text' },
+    header: { control: { type: 'text' } },
+    firstNameLabel: { control: { type: 'text' } },
+    firstNameValue: { control: { type: 'text' } },
+    ageLabel: { control: { type: 'text' } },
+    ageValue: { control: { type: 'text' } },
+    lastNameLabel: { control: { type: 'text' } },
+    lastNameValue: { control: { type: 'text' } },
+    birthLabel: { control: { type: 'text' } },
+    birthValue: { control: { type: 'text' } },
+    linkLabel: { control: { type: 'text' } },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof TableKeyValuePair>
+type Story = StoryObj<typeof meta>
 
 interface Person {
   id: number

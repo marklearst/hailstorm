@@ -3,9 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 import { FormField } from '../form-field'
 
-const meta: Meta<typeof FormField.Textarea> = {
+type TextareaStoryArgs = {
+  error: boolean
+  disabled: boolean
+  label: string
+  description: string
+  placeholder: string
+  value: string
+}
+
+const meta: Meta<TextareaStoryArgs> = {
   title: 'Input/Textarea',
-  component: FormField.Textarea,
   args: {
     error: false,
     disabled: false,
@@ -15,18 +23,18 @@ const meta: Meta<typeof FormField.Textarea> = {
     value: '',
   },
   argTypes: {
-    error: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    label: { control: 'text' },
-    description: { control: 'text' },
-    placeholder: { control: 'text' },
-    value: { control: 'text' },
+    error: { control: { type: 'boolean' } },
+    disabled: { control: { type: 'boolean' } },
+    label: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    placeholder: { control: { type: 'text' } },
+    value: { control: { type: 'text' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof FormField.Textarea>
+type Story = StoryObj<typeof meta>
 
 const TextareaWithHooks = ({
   error = false,
@@ -74,7 +82,7 @@ const TextareaWithHooks = ({
 }
 
 export const Default: Story = {
-  render: (args) => (
+  render: (args: TextareaStoryArgs) => (
     <div className='w-72'>
       <TextareaWithHooks {...args} />
     </div>

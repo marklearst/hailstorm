@@ -1,21 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { SidebarContainer } from './sidebar-container'
 
-const meta: Meta<typeof SidebarContainer> = {
+type SidebarContainerStoryArgs = {
+  sidebarLabel: string
+  pageLabel: string
+}
+
+const meta: Meta<SidebarContainerStoryArgs> = {
   title: 'SidebarContainer',
-  component: SidebarContainer,
   args: {
     sidebarLabel: 'Sidebar Content',
     pageLabel: 'Page Content',
   },
   argTypes: {
-    sidebarLabel: { control: 'text' },
-    pageLabel: { control: 'text' },
+    sidebarLabel: { control: { type: 'text' } },
+    pageLabel: { control: { type: 'text' } },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof SidebarContainer>
+type Story = StoryObj<typeof meta>
 
 export const Header: Story = {
   render: ({ sidebarLabel, pageLabel }) => (

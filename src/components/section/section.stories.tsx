@@ -2,9 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Section } from './section'
 import { Button } from '../button/button'
 
-const meta: Meta<typeof Section> = {
+type SectionStoryArgs = {
+  title: string
+  description: string
+  panelText: string
+  actionLabel: string
+}
+
+const meta: Meta<SectionStoryArgs> = {
   title: 'Section',
-  component: Section,
   args: {
     title: 'Section Title',
     description: 'Description',
@@ -12,15 +18,15 @@ const meta: Meta<typeof Section> = {
     actionLabel: 'Button',
   },
   argTypes: {
-    title: { control: 'text' },
-    description: { control: 'text' },
-    panelText: { control: 'text' },
-    actionLabel: { control: 'text' },
+    title: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    panelText: { control: { type: 'text' } },
+    actionLabel: { control: { type: 'text' } },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof Section>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({ title, description, panelText }) => (

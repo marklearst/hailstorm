@@ -4,9 +4,19 @@ import { FormField } from '../form-field'
 import { RadioBox } from './radio-box'
 import { FeaturedTag } from '../../featured-tag/featured-tag'
 
-const meta: Meta<typeof RadioBox> = {
+type RadioBoxStoryArgs = {
+  recommendedLabel: string
+  optionOneTitle: string
+  optionTwoTitle: string
+  optionThreeTitle: string
+  optionDescription: string
+  defaultValue: string
+  disableThirdOption: boolean
+  width: number
+}
+
+const meta: Meta<RadioBoxStoryArgs> = {
   title: 'Input/RadioBox',
-  component: RadioBox,
   args: {
     recommendedLabel: 'Recommended',
     optionOneTitle: 'Option 1',
@@ -19,23 +29,22 @@ const meta: Meta<typeof RadioBox> = {
     width: 384,
   },
   argTypes: {
-    recommendedLabel: { control: 'text' },
-    optionOneTitle: { control: 'text' },
-    optionTwoTitle: { control: 'text' },
-    optionThreeTitle: { control: 'text' },
-    optionDescription: { control: 'text' },
+    recommendedLabel: { control: { type: 'text' } },
+    optionOneTitle: { control: { type: 'text' } },
+    optionTwoTitle: { control: { type: 'text' } },
+    optionThreeTitle: { control: { type: 'text' } },
+    optionDescription: { control: { type: 'text' } },
     defaultValue: {
-      control: 'select',
-      options: ['value_1', 'value_2', 'value_3'],
+      control: { type: 'select', options: ['value_1', 'value_2', 'value_3'] },
     },
-    disableThirdOption: { control: 'boolean' },
+    disableThirdOption: { control: { type: 'boolean' } },
     width: { control: { type: 'range', min: 320, max: 520, step: 16 } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof RadioBox>
+type Story = StoryObj<typeof meta>
 
 const RadioBoxWithHooks = ({
   recommendedLabel,
@@ -109,7 +118,7 @@ const RadioBoxWithHooks = ({
 
 export const Default: Story = {
   render: ({ width, ...args }) => (
-    <div style={{ width }}>
+    <div style={{ width: width ?? 384 }}>
       <RadioBoxWithHooks {...args} />
     </div>
   ),

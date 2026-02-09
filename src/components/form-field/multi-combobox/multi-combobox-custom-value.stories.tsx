@@ -1,21 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { FormField } from '../form-field'
-import { hiddenArgControl } from '../../../util/storybook-utils'
 import {
   MultiComboboxCustomValueStory,
   multiComboboxArgTypes,
   multiComboboxArgs,
+  type MultiComboboxStoryArgs,
 } from './multi-combobox.story-helpers'
 
-const meta: Meta = {
+const meta: Meta<MultiComboboxStoryArgs> = {
   title: 'Input/MultiCombobox/CustomValue',
-  component: FormField.MultiCombobox,
   args: multiComboboxArgs,
   argTypes: {
     ...multiComboboxArgTypes,
-    value: hiddenArgControl,
-    onChange: hiddenArgControl,
-    className: hiddenArgControl,
   },
   parameters: {
     controls: {
@@ -26,15 +21,15 @@ const meta: Meta = {
 
 export default meta
 
-type Story = StoryObj<typeof FormField.MultiCombobox>
+type Story = StoryObj<typeof meta>
 
 export const CustomValue: Story = {
   render: ({ label, description, placeholder, width }) => (
-    <div style={{ width }}>
+    <div style={{ width: width ?? 288 }}>
       <MultiComboboxCustomValueStory
-        label={label as string}
-        description={description as string}
-        placeholder={placeholder as string}
+        label={label}
+        description={description}
+        placeholder={placeholder}
       />
     </div>
   ),

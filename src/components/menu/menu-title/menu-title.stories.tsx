@@ -2,15 +2,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { MenuTitle } from './menu-title'
 
-const meta: Meta<typeof MenuTitle> = {
+type MenuTitleStoryArgs = {
+  title: string
+  containerWidth: number
+}
+
+const meta: Meta<MenuTitleStoryArgs> = {
   title: 'Menu/MenuTitle',
-  component: MenuTitle,
   args: {
     title: 'Title',
     containerWidth: 208,
   },
   argTypes: {
-    title: { control: 'text' },
+    title: { control: { type: 'text' } },
     containerWidth: {
       control: { type: 'range', min: 120, max: 320, step: 8 },
     },
@@ -18,7 +22,7 @@ const meta: Meta<typeof MenuTitle> = {
 }
 
 export default meta
-type Story = StoryObj<typeof MenuTitle>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({ title, containerWidth }) => (

@@ -2,9 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useEffect, useState } from 'react'
 import { FormField } from '../form-field'
 
-const meta: Meta<typeof FormField.RadioInput> = {
+type RadioInputStoryArgs = {
+  label: string
+  description: string
+  optionOneLabel: string
+  optionTwoLabel: string
+  optionThreeLabel: string
+  defaultValue: string
+  disableThirdOption: boolean
+}
+
+const meta: Meta<RadioInputStoryArgs> = {
   title: 'Input/RadioInput',
-  component: FormField.RadioInput,
   args: {
     label: 'Label',
     description: 'Description',
@@ -15,22 +24,21 @@ const meta: Meta<typeof FormField.RadioInput> = {
     disableThirdOption: true,
   },
   argTypes: {
-    label: { control: 'text' },
-    description: { control: 'text' },
-    optionOneLabel: { control: 'text' },
-    optionTwoLabel: { control: 'text' },
-    optionThreeLabel: { control: 'text' },
+    label: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
+    optionOneLabel: { control: { type: 'text' } },
+    optionTwoLabel: { control: { type: 'text' } },
+    optionThreeLabel: { control: { type: 'text' } },
     defaultValue: {
-      control: 'select',
-      options: ['value_1', 'value_2', 'value_3'],
+      control: { type: 'select', options: ['value_1', 'value_2', 'value_3'] },
     },
-    disableThirdOption: { control: 'boolean' },
+    disableThirdOption: { control: { type: 'boolean' } },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof FormField.RadioInput>
+type Story = StoryObj<typeof meta>
 
 const RadioInputWithHooks = ({
   label,
