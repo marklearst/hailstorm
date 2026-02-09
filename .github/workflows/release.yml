@@ -1,12 +1,12 @@
+# Disabled for fork: no npm publish or GH_TOKEN. Re-enable and set secrets if you publish.
 name: Semantic Release CI
 
 on:
-  push:
-    branches: [main, beta]
+  workflow_dispatch: # was: push branches [main, beta]
 
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+# env:
+#   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 permissions:
   packages: write

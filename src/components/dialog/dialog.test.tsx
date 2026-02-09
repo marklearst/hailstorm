@@ -5,7 +5,7 @@ import { Dialog } from './dialog'
 describe('Dialog', () => {
   it('renders content and triggers onClose from the close button', async () => {
     const onClose = vi.fn()
-    const { container } = render(
+    render(
       <Dialog isShown title='Confirm action' onClose={onClose}>
         Dialog content
       </Dialog>,
