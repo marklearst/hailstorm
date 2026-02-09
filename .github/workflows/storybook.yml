@@ -1,20 +1,25 @@
-name: Build and Publish storybook to GitHub Pages
+# Deploys Storybook via GitHub Actions (no Jekyll). In repo Settings → Pages, set Source to "GitHub Actions".
+name: Build and Publish Storybook to GitHub Pages
 
 on:
   push:
     branches: [main]
 
 permissions:
-  contents: write  # push to gh-pages-storybook branch
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy-storybook:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
           version: 10.27.0
@@ -22,17 +27,24 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      - name: Install and Build 🔧
+      - name: Install and Build Storybook
         run: |
           pnpm install --frozen-lockfile
           pnpm run build:storybook
-      - name: Add .nojekyll file to static folder 📁
-        run:
-          | # Add .nojekyll file to the static folder to prevent 404 errors (files with _ prefix are not copied to the static folder)
-          touch storybook-static/.nojekyll
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Add .nojekyll
+        run: touch storybook-static/.nojekyll
+      - name: Upload Storybook artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages-storybook
-          folder: storybook-static
-          clean: true
+          path: storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
