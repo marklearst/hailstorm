@@ -1,21 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Page } from './page'
 
-const meta: Meta<typeof Page> = {
+type PageStoryArgs = {
+  title: string
+  description: string
+}
+
+const meta: Meta<PageStoryArgs> = {
   title: 'Page',
-  component: Page,
   args: {
     title: 'Page Title',
     description: 'Description',
   },
   argTypes: {
-    title: { control: 'text' },
-    description: { control: 'text' },
+    title: { control: { type: 'text' } },
+    description: { control: { type: 'text' } },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof Page>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: ({ title, description }) => (
